@@ -16,3 +16,11 @@
 .name {
   font-weight: lighter;
 }
+.navContainer a img {
+  max-width: 10vh;
+}
+.containerCategories a {
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

@@ -1,6 +1,8 @@
-.menssage {
-  font-size: 25px;
-  font-weight: lighter;
-  text-align: center;
-  padding: 30px;
+.sectionCard {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding-top: 50px;
+  gap: 20px;
 }
