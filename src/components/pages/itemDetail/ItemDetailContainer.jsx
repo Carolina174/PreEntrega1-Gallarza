@@ -7,7 +7,7 @@ import { db } from "../../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
 
   let { id } = useParams();
 
@@ -16,12 +16,16 @@ const ItemDetailContainer = () => {
   let cantidadEnCarrito = getTotalQuantityById(id);
 
   useEffect(() => {
-    let referenciaColl = collection(db, "product");
+    let referenciaColl = collection(db, "products");
     let referenciaDoc = doc(referenciaColl, id);
 
-    getDoc(referenciaDoc).then((res) =>
-      setProduct({ ...res.data(), id: res.id })
-    );
+    getDoc(referenciaDoc).then((res) => {
+      if (res.exists()) {
+        setProduct({ ...res.data(), id: res.id });
+      } else {
+        setProduct(null); // Establecer product como null si no existe
+      }
+    });
   }, [id]);
 
   const agregarAlCarrito = (cantidad) => {
@@ -33,7 +37,7 @@ const ItemDetailContainer = () => {
     Swal.fire({
       position: "center",
       icon: "success",
-      title: "Agregado correctamentes",
+      title: "Agregado correctamente",
       showConfirmButton: false,
       timer: 1500,
     });

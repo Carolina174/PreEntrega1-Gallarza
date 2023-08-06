@@ -1,0 +1,27 @@
+.detalleCompra {
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 150%;
+}
+.title {
+  text-decoration: none;
+  text-align: center;
+  color: rgb(78, 37, 116);
+  margin-bottom: 20px;
+}
+.detalle {
+  max-width: 300px;
+  margin: 0px auto;
+}
+h5 {
+  text-align: center;
+}
+form {
+  text-align: center;
+}

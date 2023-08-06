@@ -1,18 +1,22 @@
 import CounterContainer from "../../common/counter/CounterContainer";
 
 const Item = ({ product, agregarAlCarrito, cantidadEnCarrito }) => {
+  if (!product) {
+    return <p>El producto no existe.</p>;
+  }
   return (
-    <div>
+    <>
       <h1>{product.title}</h1>
-      <h2>{product.price}</h2>
-      <h3>{product.description}</h3>
+      <h3>Precio: {product.price}</h3>
+      <h5>Detalle:{product.description}</h5>
+      <img src={product.image} alt="" />
 
       <CounterContainer
         stock={product.stock}
         agregarAlCarrito={agregarAlCarrito}
         cantidadEnCarrito={cantidadEnCarrito}
       ></CounterContainer>
-    </div>
+    </>
   );
 };
 

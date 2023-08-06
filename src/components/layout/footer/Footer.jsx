@@ -1,7 +1,9 @@
+import "./Footer.css";
+
 const Footer = () => {
   return (
-    <div>
-      <h1>es el footer</h1>
+    <div className="footer">
+      <p>© Copyright, Desarrollada por Carolina Gallarza</p>
     </div>
   );
 };

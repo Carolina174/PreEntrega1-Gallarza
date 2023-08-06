@@ -29,7 +29,7 @@ const CartContainer = () => {
   let total = getTotalPrice();
   return (
     <div>
-      <h1>Cart</h1>
+      <h1>Mis productos</h1>
 
       {cart.map((elemento) => {
         return (
@@ -41,7 +41,6 @@ const CartContainer = () => {
             <h2>{elemento.price}</h2>
             <h3>Cantidad: {elemento.quantity}</h3>
             <Button variant="contained" onClick={() => deleteById(elemento.id)}>
-              {" "}
               Eliminar
             </Button>
           </div>
