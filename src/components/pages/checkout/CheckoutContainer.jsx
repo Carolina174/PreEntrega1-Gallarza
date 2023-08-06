@@ -1,44 +1,83 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { CartContext } from "../../../context/CartContext";
+import { db } from "../../../firebaseConfig";
+import { Button } from "@mui/material";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 
 const CheckoutContainer = () => {
-  const navigate = useNavigate();
+  const { cart, getTotalPrice } = useContext(CartContext);
+
+  const [orderId, setOrderId] = useState("");
 
   const [userData, setUserData] = useState({
     name: "",
-    lastName: "",
+    phone: "",
+    email: "",
   });
 
-  const funcionDelFormulario = (evento) => {
+  let total = getTotalPrice();
+  const handleSubmit = (evento) => {
     evento.preventDefault();
 
-    console.log(userData);
-    //acá quiero volver al home
-    navigate("/");
+    let order = {
+      buyer: userData,
+      items: cart,
+      total,
+      date: serverTimestamp(),
+    };
+
+    //creo la orden
+    let ordersCollections = collection(db, "orders");
+
+    addDoc(ordersCollections, order).then((res) => setOrderId(res.id));
+    //modificar los productos en el stock
+
+    cart.forEach((elemento) => {
+      let refDoc = doc(db, "products", elemento.id);
+      updateDoc(refDoc, { stock: elemento.stock - elemento.quantity });
+    });
   };
 
-  const funcionDeLosInput = (evento) => {
+  const handleChange = (evento) => {
     setUserData({ ...userData, [evento.target.name]: evento.target.value });
   };
   return (
     <div>
       <h1>Checkout</h1>
-      <form action="" onSubmit={funcionDelFormulario}>
-        <input
-          type="text"
-          placeholder="ingrese su nombre"
-          name="name"
-          onChange={funcionDeLosInput}
-        />
-        <input
-          type="text"
-          placeholder="ingrese su apellido"
-          name="lastName"
-          onChange={funcionDeLosInput}
-        />
-        <button type="submit">Enviar</button>
-        <button type="button">Cancelar</button>
-      </form>
+
+      {orderId ? (
+        <h3>Su número de compra es: {orderId}</h3>
+      ) : (
+        <form action="" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="ingrese su nombre"
+            name="name"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            placeholder="ingrese su teléfono"
+            name="phone"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            placeholder="ingrese su email"
+            name="email"
+            onChange={handleChange}
+          />
+          <Button variant="contained" type="submit">
+            Comprar
+          </Button>
+        </form>
+      )}
     </div>
   );
 };
