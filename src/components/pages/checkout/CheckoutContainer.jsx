@@ -76,10 +76,10 @@ const CheckoutContainer = () => {
     <div className="detalleCompra" style={{ padding: "40px" }}>
       {!orderId ? (
         <>
-          <h4 className="title">
+          <h3 className="title">
             Confirme el detalle de su compra e ingrese los datos solicitados
             para finalizar:
-          </h4>
+          </h3>
           {cart.map((elemento) => (
             <div className="detalle">
               <ul key={elemento.id}>
@@ -145,7 +145,10 @@ const CheckoutContainer = () => {
           </div>
         </>
       ) : (
-        <h1>La orden es {orderId}</h1>
+        <h3>
+          Compra realizada exitosamente, su número de orden es:{" "}
+          <span>{orderId}</span>
+        </h3>
       )}
     </div>
   );

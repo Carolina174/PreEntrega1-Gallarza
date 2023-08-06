@@ -2,9 +2,8 @@ import ItemListContainer from "../components/pages/itemList/ItemListContainer";
 import ItemDetailContainer from "../components/pages/itemDetail/ItemDetailContainer";
 import CartContainer from "../components/pages/cart/CartContainer";
 import CheckoutContainer from "../components/pages/checkout/CheckoutContainer";
-import Dashboard from "../components/pages/dashboard/Dashboard";
-/* import FormFormik from "../components/pages/formFormik/FormFormik";
-FormFormik */
+/* import Dashboard from "../components/pages/dashboard/Dashboard"; */
+
 export const routes = [{
         id: "home",
         path: "/",
@@ -43,11 +42,11 @@ export const routes = [{
         Element: ItemListContainer,
     },
 
-    {
-        id: "dashboard",
-        path: "/dashboard",
-        Element: Dashboard,
-    },
+    /*     {
+            id: "dashboard",
+            path: "/dashboard",
+            Element: Dashboard,
+        }, */
 
 
 ];

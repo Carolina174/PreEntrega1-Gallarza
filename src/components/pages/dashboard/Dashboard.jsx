@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+/* import { Button } from "@mui/material";
 import { products } from "../../../productsMock";
 import { db } from "../../../firebaseConfig";
 import { addDoc, collection } from "@firebase/firestore";
@@ -22,3 +22,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+ */

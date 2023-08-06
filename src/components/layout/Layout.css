@@ -1,3 +1,13 @@
 .layout {
   min-width: 800px;
 }
+.pagina {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Envolver el contenido principal y hacer que ocupe todo el espacio restante */
+.principal {
+  flex: 1;
+}
