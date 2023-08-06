@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Ruta para el administrador</h1>
+      <h1>Para administradores:</h1>
       <Button variant="contained" onClick={rellenar}>
         Rellenar base de datos
       </Button>
